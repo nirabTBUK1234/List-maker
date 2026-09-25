@@ -48,7 +48,7 @@ fn main() {
                 .as_bytes())
                 .expect("Failed to write to file");
 
-            let condition :bool = row.item
+            let quit_condition :bool = row.item
                 .trim()
                 .to_ascii_lowercase() == "exit" || 
                 row.item
@@ -56,7 +56,7 @@ fn main() {
                 .to_ascii_lowercase() == "quit";
 
 
-            if condition
+            if quit_condition
             {
                 break;
             }
