@@ -26,6 +26,11 @@ fn main() {
             .read_line(&mut row.item)
             .expect("Failed to read line");
 
+        let note = row.item.trim().to_ascii_lowercase();
+        if note == "exit" || note == "quit" {
+            break;
+        }
+
         print!("Enter the symbol number:\n\t");
 
         io::stdout().flush().unwrap();
@@ -50,23 +55,5 @@ fn main() {
 
         row.item.clear();
         row.symbol_no.clear();
-
-            let quit_condition :bool = row.item
-                .trim()
-                .to_ascii_lowercase() == "exit" || 
-                row.item
-                .trim()
-                .to_ascii_lowercase() == "quit";
-
-
-            if quit_condition
-            {
-                break;
-            }
-
-            else 
-            {
-                continue;
-            }
     }
 }
