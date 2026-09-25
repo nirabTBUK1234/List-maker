@@ -35,18 +35,21 @@ fn main() {
             .expect("Failed to read line");
 
         let mut file = OpenOptions::new()
-            .create(true)  
-            .append(true) 
+            .create(true)
+            .append(true)
             .open("notes.txt")
             .expect("could not open file");
-        
-            file.write_all(format!("{} ", row.symbol_no)
-                .as_bytes())
-                .expect("Failed to write to file");
 
-            file.write_all(row.item
-                .as_bytes())
-                .expect("Failed to write to file");
+        writeln!(
+            file,
+            "{}. {}",
+            row.symbol_no.trim(),
+            row.item.trim()
+        )
+        .expect("Failed to write to file");
+
+        row.item.clear();
+        row.symbol_no.clear();
 
             let quit_condition :bool = row.item
                 .trim()
